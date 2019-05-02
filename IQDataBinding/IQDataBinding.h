@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NSObject+IQDataBinding.h"
+#import "UIView+IQDataBinding.h"
 
 //! Project version number for IQDataBinding.
 FOUNDATION_EXPORT double IQDataBindingVersionNumber;

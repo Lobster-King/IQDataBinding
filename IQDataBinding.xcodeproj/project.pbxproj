@@ -14,6 +14,12 @@
 		BAFD1631227B3A86002D98EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BAFD1630227B3A86002D98EB /* Assets.xcassets */; };
 		BAFD1634227B3A86002D98EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BAFD1632227B3A86002D98EB /* LaunchScreen.storyboard */; };
 		BAFD1637227B3A86002D98EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1636227B3A86002D98EB /* main.m */; };
+		BAFD163D227B3CB8002D98EB /* NSObject+IQDataBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */; };
+		BAFD163E227B3CB8002D98EB /* NSObject+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */; };
+		BAFD1641227B3E56002D98EB /* UIView+IQDataBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFD163F227B3E56002D98EB /* UIView+IQDataBinding.h */; };
+		BAFD1642227B3E56002D98EB /* UIView+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */; };
+		BAFD1645227B3EB5002D98EB /* ContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1644227B3EB5002D98EB /* ContentModel.m */; };
+		BAFD164F227B4F71002D98EB /* UIView+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +36,12 @@
 		BAFD1633227B3A86002D98EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BAFD1635227B3A86002D98EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BAFD1636227B3A86002D98EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+IQDataBinding.h"; sourceTree = "<group>"; };
+		BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IQDataBinding.m"; sourceTree = "<group>"; };
+		BAFD163F227B3E56002D98EB /* UIView+IQDataBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IQDataBinding.h"; sourceTree = "<group>"; };
+		BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQDataBinding.m"; sourceTree = "<group>"; };
+		BAFD1643227B3EB5002D98EB /* ContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentModel.h; sourceTree = "<group>"; };
+		BAFD1644227B3EB5002D98EB /* ContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 				BAFD1618227B39DF002D98EB /* IQDataBinding */,
 				BAFD1626227B3A85002D98EB /* IQDataBindingDemo */,
 				BAFD1617227B39DF002D98EB /* Products */,
+				BAFD1648227B4ED2002D98EB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,6 +86,10 @@
 			children = (
 				BAFD1619227B39DF002D98EB /* IQDataBinding.h */,
 				BAFD161A227B39DF002D98EB /* Info.plist */,
+				BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */,
+				BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */,
+				BAFD163F227B3E56002D98EB /* UIView+IQDataBinding.h */,
+				BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */,
 			);
 			path = IQDataBinding;
 			sourceTree = "<group>";
@@ -84,6 +101,8 @@
 				BAFD1628227B3A85002D98EB /* AppDelegate.m */,
 				BAFD162A227B3A85002D98EB /* ViewController.h */,
 				BAFD162B227B3A85002D98EB /* ViewController.m */,
+				BAFD1643227B3EB5002D98EB /* ContentModel.h */,
+				BAFD1644227B3EB5002D98EB /* ContentModel.m */,
 				BAFD162D227B3A85002D98EB /* Main.storyboard */,
 				BAFD1630227B3A86002D98EB /* Assets.xcassets */,
 				BAFD1632227B3A86002D98EB /* LaunchScreen.storyboard */,
@@ -93,6 +112,13 @@
 			path = IQDataBindingDemo;
 			sourceTree = "<group>";
 		};
+		BAFD1648227B4ED2002D98EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -100,6 +126,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFD163D227B3CB8002D98EB /* NSObject+IQDataBinding.h in Headers */,
+				BAFD1641227B3E56002D98EB /* UIView+IQDataBinding.h in Headers */,
 				BAFD161B227B39DF002D98EB /* IQDataBinding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,6 +231,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFD1642227B3E56002D98EB /* UIView+IQDataBinding.m in Sources */,
+				BAFD163E227B3CB8002D98EB /* NSObject+IQDataBinding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +240,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAFD164F227B4F71002D98EB /* UIView+IQDataBinding.m in Sources */,
 				BAFD162C227B3A85002D98EB /* ViewController.m in Sources */,
+				BAFD1645227B3EB5002D98EB /* ContentModel.m in Sources */,
 				BAFD1637227B3A86002D98EB /* main.m in Sources */,
 				BAFD1629227B3A85002D98EB /* AppDelegate.m in Sources */,
 			);
@@ -373,6 +405,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.IQDataBinding;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -397,6 +430,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.IQDataBinding;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -414,6 +448,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.IQDataBindingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -430,6 +466,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobster.IQDataBindingDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
