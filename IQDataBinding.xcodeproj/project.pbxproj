@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA4129C2227BC50500EA8099 /* NSObject+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */; };
 		BAFD161B227B39DF002D98EB /* IQDataBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFD1619227B39DF002D98EB /* IQDataBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAFD1629227B3A85002D98EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1628227B3A85002D98EB /* AppDelegate.m */; };
 		BAFD162C227B3A85002D98EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD162B227B3A85002D98EB /* ViewController.m */; };
@@ -16,10 +17,7 @@
 		BAFD1637227B3A86002D98EB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1636227B3A86002D98EB /* main.m */; };
 		BAFD163D227B3CB8002D98EB /* NSObject+IQDataBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */; };
 		BAFD163E227B3CB8002D98EB /* NSObject+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */; };
-		BAFD1641227B3E56002D98EB /* UIView+IQDataBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFD163F227B3E56002D98EB /* UIView+IQDataBinding.h */; };
-		BAFD1642227B3E56002D98EB /* UIView+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */; };
 		BAFD1645227B3EB5002D98EB /* ContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1644227B3EB5002D98EB /* ContentModel.m */; };
-		BAFD164F227B4F71002D98EB /* UIView+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,8 +36,6 @@
 		BAFD1636227B3A86002D98EB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+IQDataBinding.h"; sourceTree = "<group>"; };
 		BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+IQDataBinding.m"; sourceTree = "<group>"; };
-		BAFD163F227B3E56002D98EB /* UIView+IQDataBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+IQDataBinding.h"; sourceTree = "<group>"; };
-		BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+IQDataBinding.m"; sourceTree = "<group>"; };
 		BAFD1643227B3EB5002D98EB /* ContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentModel.h; sourceTree = "<group>"; };
 		BAFD1644227B3EB5002D98EB /* ContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -88,8 +84,6 @@
 				BAFD161A227B39DF002D98EB /* Info.plist */,
 				BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */,
 				BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */,
-				BAFD163F227B3E56002D98EB /* UIView+IQDataBinding.h */,
-				BAFD1640227B3E56002D98EB /* UIView+IQDataBinding.m */,
 			);
 			path = IQDataBinding;
 			sourceTree = "<group>";
@@ -127,7 +121,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BAFD163D227B3CB8002D98EB /* NSObject+IQDataBinding.h in Headers */,
-				BAFD1641227B3E56002D98EB /* UIView+IQDataBinding.h in Headers */,
 				BAFD161B227B39DF002D98EB /* IQDataBinding.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -231,7 +224,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAFD1642227B3E56002D98EB /* UIView+IQDataBinding.m in Sources */,
 				BAFD163E227B3CB8002D98EB /* NSObject+IQDataBinding.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,7 +232,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BAFD164F227B4F71002D98EB /* UIView+IQDataBinding.m in Sources */,
+				BA4129C2227BC50500EA8099 /* NSObject+IQDataBinding.m in Sources */,
 				BAFD162C227B3A85002D98EB /* ViewController.m in Sources */,
 				BAFD1645227B3EB5002D98EB /* ContentModel.m in Sources */,
 				BAFD1637227B3A86002D98EB /* main.m in Sources */,

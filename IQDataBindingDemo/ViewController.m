@@ -27,9 +27,9 @@
     ContentModel *model = [[ContentModel alloc]init];
     model.content = @"data binding demo";
     
-    self.contentLabel.bind(@"key",^(id value){
+    self.bind(@"key1",^(id value){
 
-    }).bind(@"key",^(id value){
+    }).bind(@"key2",^(id value){
         
     });
     // Do any additional setup after loading the view.

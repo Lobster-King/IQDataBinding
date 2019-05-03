@@ -10,4 +10,14 @@
 
 @implementation NSObject (IQDataBinding)
 
+- (NSObject *(^)(NSString *,observe))bind {
+    NSObject *(^haha)(NSString *,observe) = ^(NSString *key,observe o){
+        if ([key isEqualToString:@"key1"]) {
+            o(@"result");
+        }
+        return self;
+    };
+    return haha;
+}
+
 @end

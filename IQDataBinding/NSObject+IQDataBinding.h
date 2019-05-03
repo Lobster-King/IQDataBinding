@@ -10,9 +10,12 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^observe)(id returnValue);
+
 @interface NSObject (IQDataBinding)
 
-@property (nonatomic, strong) id binder;
+- (void)bindModel:(id)model;
+- (NSObject *(^)(NSString *,observe))bind;
 
 @end
 
