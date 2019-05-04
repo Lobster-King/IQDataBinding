@@ -15,14 +15,14 @@ static NSMutableDictionary *stashedObserver = nil;
 @interface IQWatchDog : NSObject
 
 @property (nonatomic, strong) id target;
-@property (nonatomic, strong) NSMutableDictionary *keyPathsAndCallBack;
+@property (nonatomic, strong) NSMutableDictionary *keyPathsAndCallBacks;
 
 @end
 
 @implementation IQWatchDog
 
 - (void)dealloc {
-    [self.keyPathsAndCallBack enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [self.keyPathsAndCallBacks enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [self.target removeObserver:self forKeyPath:key];
     }];
 }
@@ -34,28 +34,28 @@ static NSMutableDictionary *stashedObserver = nil;
         callBack(value);
     }
     /*添加观察者*/
-    [self.keyPathsAndCallBack setObject:callBack forKey:keyPath];
+    [self.keyPathsAndCallBacks setObject:callBack forKey:keyPath];
     [self.target addObserver:self forKeyPath:keyPath options:NSKeyValueObservingOptionNew context:NULL];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
-    observerCallBack callBack = self.keyPathsAndCallBack[keyPath];
+    observerCallBack callBack = self.keyPathsAndCallBacks[keyPath];
     if (callBack) {
         callBack(change[NSKeyValueChangeNewKey]);
     }
 }
 
 - (void)removeAllObservers {
-    [self.keyPathsAndCallBack enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+    [self.keyPathsAndCallBacks enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
         [self.target removeObserver:self forKeyPath:key];
     }];
 }
 
-- (NSMutableDictionary *)keyPathsAndCallBack {
-    if (!_keyPathsAndCallBack) {
-        _keyPathsAndCallBack = [NSMutableDictionary dictionary];
+- (NSMutableDictionary *)keyPathsAndCallBacks {
+    if (!_keyPathsAndCallBacks) {
+        _keyPathsAndCallBacks = [NSMutableDictionary dictionary];
     }
-    return _keyPathsAndCallBack;
+    return _keyPathsAndCallBacks;
 }
 
 @end
