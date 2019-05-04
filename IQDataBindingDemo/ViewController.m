@@ -52,8 +52,9 @@
     self.contentModel.title = @"title";
     self.contentModel.content = @"content";
     
+    /*view和viewModel之间绑定*/
     [self.contentView bindModel:self.contentModel];
-//    [self.contentView updateView];
+    
 }
 
 @end
