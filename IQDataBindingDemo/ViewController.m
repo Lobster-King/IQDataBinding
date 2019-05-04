@@ -8,13 +8,14 @@
 
 #import "ViewController.h"
 #import <IQDataBinding/IQDataBinding.h>
+#import "ContentView.h"
 #import "ContentModel.h"
 
 @interface ViewController ()
 
-@property (nonatomic, strong) UILabel *contentLabel;
-
-@property (nonatomic, strong) UILabel *contentLabel1;
+@property (nonatomic, strong) ContentView *contentView;
+@property (nonatomic, strong) UIButton *changeButton;
+@property (nonatomic, strong) ContentModel *contentModel;
 
 @end
 
@@ -22,25 +23,37 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.view addSubview:self.contentLabel];
+    [self setUpSubviews];
+    [self configData];
     
-    ContentModel *model = [[ContentModel alloc]init];
-    model.content = @"data binding demo";
-    
-    self.bind(@"key1",^(id value){
-
-    }).bind(@"key2",^(id value){
-        
-    });
-    // Do any additional setup after loading the view.
 }
 
-- (UILabel *)contentLabel {
-    if (!_contentLabel) {
-        _contentLabel = [[UILabel alloc]init];
-    }
-    return _contentLabel;
+- (void)changeButtonClicked {
+    self.contentModel.title = @"title changed";
+    self.contentModel.content = @"content changed";
 }
 
+- (void)setUpSubviews {
+    self.contentView = [[ContentView alloc]initWithFrame:CGRectMake(100, 100, 200, 60)];
+    [self.view addSubview:self.contentView];
+    self.contentView.center = self.view.center;
+    
+    self.changeButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    self.changeButton.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y + 100, 200, 40);
+    
+    [self.changeButton setTitle:@"更改标题和内容" forState:UIControlStateNormal];
+    [self.changeButton addTarget:self action:@selector(changeButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.changeButton];
+    
+}
+
+- (void)configData {
+    self.contentModel = [[ContentModel alloc]init];
+    self.contentModel.title = @"title";
+    self.contentModel.content = @"content";
+    
+    [self.contentView bindModel:self.contentModel];
+    [self.contentView updateView];
+}
 
 @end

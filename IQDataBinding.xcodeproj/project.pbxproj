@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BA4129C2227BC50500EA8099 /* NSObject+IQDataBinding.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */; };
+		BA68B9A4227DD4F1005F4819 /* ContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = BA68B9A3227DD4F1005F4819 /* ContentView.m */; };
 		BAFD161B227B39DF002D98EB /* IQDataBinding.h in Headers */ = {isa = PBXBuildFile; fileRef = BAFD1619227B39DF002D98EB /* IQDataBinding.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BAFD1629227B3A85002D98EB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD1628227B3A85002D98EB /* AppDelegate.m */; };
 		BAFD162C227B3A85002D98EB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BAFD162B227B3A85002D98EB /* ViewController.m */; };
@@ -21,6 +22,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BA68B9A2227DD4F1005F4819 /* ContentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContentView.h; sourceTree = "<group>"; };
+		BA68B9A3227DD4F1005F4819 /* ContentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ContentView.m; sourceTree = "<group>"; };
 		BAFD1616227B39DF002D98EB /* IQDataBinding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQDataBinding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BAFD1619227B39DF002D98EB /* IQDataBinding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IQDataBinding.h; sourceTree = "<group>"; };
 		BAFD161A227B39DF002D98EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -81,9 +84,9 @@
 			isa = PBXGroup;
 			children = (
 				BAFD1619227B39DF002D98EB /* IQDataBinding.h */,
-				BAFD161A227B39DF002D98EB /* Info.plist */,
 				BAFD163B227B3CB8002D98EB /* NSObject+IQDataBinding.h */,
 				BAFD163C227B3CB8002D98EB /* NSObject+IQDataBinding.m */,
+				BAFD161A227B39DF002D98EB /* Info.plist */,
 			);
 			path = IQDataBinding;
 			sourceTree = "<group>";
@@ -95,6 +98,8 @@
 				BAFD1628227B3A85002D98EB /* AppDelegate.m */,
 				BAFD162A227B3A85002D98EB /* ViewController.h */,
 				BAFD162B227B3A85002D98EB /* ViewController.m */,
+				BA68B9A2227DD4F1005F4819 /* ContentView.h */,
+				BA68B9A3227DD4F1005F4819 /* ContentView.m */,
 				BAFD1643227B3EB5002D98EB /* ContentModel.h */,
 				BAFD1644227B3EB5002D98EB /* ContentModel.m */,
 				BAFD162D227B3A85002D98EB /* Main.storyboard */,
@@ -234,6 +239,7 @@
 			files = (
 				BA4129C2227BC50500EA8099 /* NSObject+IQDataBinding.m in Sources */,
 				BAFD162C227B3A85002D98EB /* ViewController.m in Sources */,
+				BA68B9A4227DD4F1005F4819 /* ContentView.m in Sources */,
 				BAFD1645227B3EB5002D98EB /* ContentModel.m in Sources */,
 				BAFD1637227B3A86002D98EB /* main.m in Sources */,
 				BAFD1629227B3A85002D98EB /* AppDelegate.m in Sources */,
