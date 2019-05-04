@@ -33,15 +33,13 @@
     self.titleLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 20);
     self.contentLabel.frame = CGRectMake(0, 40, self.bounds.size.width, 20);
     
-}
-
-- (void)updateView {
     __weak typeof(self)weakSelf = self;
     self.bind(@"title",^(id value){
         weakSelf.titleLabel.text = value;
     }).bind(@"content",^(id value){
         weakSelf.contentLabel.text = value;
     });
+    
 }
 
 - (UILabel *)titleLabel {

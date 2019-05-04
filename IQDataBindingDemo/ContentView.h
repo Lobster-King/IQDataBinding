@@ -12,7 +12,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ContentView : UIView
 
-- (void)updateView;
 
 @end
 

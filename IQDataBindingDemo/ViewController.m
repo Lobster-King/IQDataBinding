@@ -53,7 +53,7 @@
     self.contentModel.content = @"content";
     
     [self.contentView bindModel:self.contentModel];
-    [self.contentView updateView];
+//    [self.contentView updateView];
 }
 
 @end
