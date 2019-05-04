@@ -31,6 +31,7 @@
 - (void)changeButtonClicked {
     self.contentModel.title = @"title changed";
     self.contentModel.content = @"content changed";
+    self.contentModel.age = 28;
 }
 
 - (void)setUpSubviews {

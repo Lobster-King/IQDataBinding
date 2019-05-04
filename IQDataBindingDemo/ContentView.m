@@ -38,6 +38,8 @@
         weakSelf.titleLabel.text = value;
     }).bind(@"content",^(id value){
         weakSelf.contentLabel.text = value;
+    }).bind(@"age",^(id value){
+        
     });
     
 }
