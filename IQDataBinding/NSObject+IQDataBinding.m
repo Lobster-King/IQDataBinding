@@ -14,7 +14,7 @@ static NSMutableDictionary *stashedObserver = nil;
 
 @interface IQWatchDog : NSObject
 
-@property (nonatomic, strong) id target;
+@property (nonatomic, weak) id target;
 @property (nonatomic, strong) NSMutableDictionary *keyPathsAndCallBacks;
 
 @end

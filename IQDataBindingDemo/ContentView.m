@@ -18,6 +18,10 @@
 
 @implementation ContentView
 
+- (void)dealloc {
+    
+}
+
 - (id)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         [self setUpSubviews];

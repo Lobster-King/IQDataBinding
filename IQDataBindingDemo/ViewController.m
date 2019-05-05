@@ -26,6 +26,8 @@
     [self setUpSubviews];
     [self configData];
     
+//    [self testModelDealloc];
+//    [self testViewDealloc];
 }
 
 - (void)changeButtonClicked {
@@ -56,6 +58,15 @@
     /*view和viewModel之间绑定*/
     [self.contentView bindModel:self.contentModel];
     
+}
+
+- (void)testViewDealloc {
+    [self.contentView removeFromSuperview];
+    self.contentView = nil;
+}
+
+- (void)testModelDealloc {
+    self.contentModel = nil;
 }
 
 @end
