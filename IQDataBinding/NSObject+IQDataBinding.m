@@ -114,7 +114,6 @@ static NSMutableDictionary *stashedObserver = nil;
             [viewStashMap setObject:observer forKey:keyPath];
             
             [stashedObserver setObject:viewStashMap forKey:viewP];
-            
             return self;
         }
         
@@ -122,6 +121,18 @@ static NSMutableDictionary *stashedObserver = nil;
         return self;
     };
     return chainObject;
+}
+
+- (void)updateValue:(id)value forKeyPath:(NSString *)keyPath {
+#warning 避免触发KVO，导致死循环
+    IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
+    [viewAssociatedModel.target setValue:value forKey:keyPath];
+    
+//    Ivar ivar = class_getInstanceVariable([viewAssociatedModel.target class], [keyPath UTF8String]);
+//    void (*f)(id, Ivar, float) = (void (*)(id, Ivar, float))object_setIvar;
+//    object_setIvar(viewAssociatedModel.target, ivar, value);
+//    f(viewAssociatedModel.target, ivar, value);
+    
 }
 
 @end

@@ -34,6 +34,10 @@
     self.contentModel.title = @"title changed";
     self.contentModel.content = @"content changed";
     self.contentModel.age = 28;
+    [self.contentView updateValue:@(30) forKeyPath:@"age"];
+    [self.contentView updateValue:@(30.0) forKeyPath:@"cgfl"];
+    [self.contentView updateValue:[NSNumber numberWithFloat:50.0] forKeyPath:@"fl"];
+    
 }
 
 - (void)setUpSubviews {

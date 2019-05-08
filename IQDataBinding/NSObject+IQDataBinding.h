@@ -16,6 +16,7 @@ typedef void(^observerCallBack)(id changedValue);
 
 - (void)bindModel:(id)model;
 - (NSObject *(^)(NSString *keyPath,observerCallBack observer))bind;
+- (void)updateValue:(id)value forKeyPath:(NSString *)keyPath;
 
 @end
 
