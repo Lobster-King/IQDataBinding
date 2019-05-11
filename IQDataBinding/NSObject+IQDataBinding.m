@@ -129,6 +129,7 @@ static NSMutableDictionary *stashedObserver = nil;
     [viewAssociatedModel.target setValue:value forKey:keyPath];
 #warning TODO 可以用不定参数来解决传输不同类型数据问题。
 #warning TODO object_setIvar函数只支持设置id类型，需要根据不定参数进行函数强转。
+#warning 采用函数式编程思路进行设置
 //    Ivar ivar = class_getInstanceVariable([viewAssociatedModel.target class], [keyPath UTF8String]);
 //    void (*f)(id, Ivar, float) = (void (*)(id, Ivar, float))object_setIvar;
 //    object_setIvar(viewAssociatedModel.target, ivar, value);
