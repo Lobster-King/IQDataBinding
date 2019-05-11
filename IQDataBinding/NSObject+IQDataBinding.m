@@ -124,10 +124,11 @@ static NSMutableDictionary *stashedObserver = nil;
 }
 
 - (void)updateValue:(id)value forKeyPath:(NSString *)keyPath {
-#warning 避免触发KVO，导致死循环
+#warning fix me！！直接setvalue会触发KVO，导致死循环
     IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
     [viewAssociatedModel.target setValue:value forKey:keyPath];
-    
+#warning TODO 可以用不定参数来解决传输不同类型数据问题。
+#warning TODO object_setIvar函数只支持设置id类型，需要根据不定参数进行函数强转。
 //    Ivar ivar = class_getInstanceVariable([viewAssociatedModel.target class], [keyPath UTF8String]);
 //    void (*f)(id, Ivar, float) = (void (*)(id, Ivar, float))object_setIvar;
 //    object_setIvar(viewAssociatedModel.target, ivar, value);
