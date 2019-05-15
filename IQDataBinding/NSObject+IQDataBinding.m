@@ -63,6 +63,11 @@ static NSMutableDictionary *stashedObserver = nil;
 @implementation NSObject (IQDataBinding)
 
 - (void)bindModel:(id)model {
+    /*给view添加一个关联对象IQWatchDog，IQWatchDog职责如下
+     1.存储@{绑定的Key，回调Block}对应关系。
+     2.根据@{绑定的Key，回调Block}中的Key，进行KVO监听。
+     3.监听view Dealloc事件，自动移除KVO监听。
+     */
     IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
     if (!viewAssociatedModel) {
         viewAssociatedModel = [[IQWatchDog alloc]init];
@@ -75,6 +80,12 @@ static NSMutableDictionary *stashedObserver = nil;
         [viewAssociatedModel removeAllObservers];
     }
     
+    /*借鉴Git stash暂存命令理念，stashedObserver职责如下
+     1.如果bindModel调用在绑定keyPath之后调用，会自动把当前@{绑定的Key，回调Block}结构保存到暂存区。
+     2.调用bindModel的时候先根据当前view的地址指针去stashedObserver取暂存的数据。
+     3.如果暂存区有数据则调用IQWatchDog注册方法进行自动注册。
+     4.注册完成进行stash pop操作。
+     */
     NSString *viewP = [NSString stringWithFormat:@"%p",self];
     
     NSDictionary *viewStashMap = stashedObserver[viewP];
