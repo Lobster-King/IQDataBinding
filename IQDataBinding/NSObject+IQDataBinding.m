@@ -107,14 +107,9 @@ static NSMutableDictionary *stashedObserver = nil;
     }
     
     IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
-    
-//    NSAssert(viewAssociatedModel, @"请先绑定viewModel！");
-    
-    NSObject *(^chainObject)(NSString *,observerCallBack) = ^(NSString *keyPath,observerCallBack observer){
-        
+    return ^(NSString *keyPath,observerCallBack observer){
         /*viewAssociatedModel为空，说明在绑定属性前没有绑定model，此处进行stash暂存*/
         if (!viewAssociatedModel) {
-            
             /*stash push*/
             NSString *viewP = [NSString stringWithFormat:@"%p",self];
             NSMutableDictionary *viewStashMap = [NSMutableDictionary dictionaryWithDictionary:stashedObserver[viewP]];
@@ -128,11 +123,9 @@ static NSMutableDictionary *stashedObserver = nil;
             [stashedObserver setObject:viewStashMap forKey:viewP];
             return self;
         }
-        
         [viewAssociatedModel observeKeyPath:keyPath callBack:observer];
         return self;
     };
-    return chainObject;
 }
 
 - (void)updateValue:(id)value forKeyPath:(NSString *)keyPath {
@@ -147,6 +140,12 @@ static NSMutableDictionary *stashedObserver = nil;
 //    object_setIvar(viewAssociatedModel.target, ivar, value);
 //    f(viewAssociatedModel.target, ivar, value);
     
+}
+
+- (NSObject *(^)(NSString *keyPath,...))update {
+    return ^(NSString *keyPath,...) {
+        return self;
+    };
 }
 
 @end

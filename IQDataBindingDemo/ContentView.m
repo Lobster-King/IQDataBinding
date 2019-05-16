@@ -44,9 +44,12 @@
         weakSelf.contentLabel.text = value;
     }).bind(@"age",^(id value){
         
-    }).bind(@"",^(id value) {
-        
     });
+    
+//    const char*type = __typeof__((20));
+//
+//    self.update(@"key",20);
+    self.update(@"key",20);
     
 }
 
