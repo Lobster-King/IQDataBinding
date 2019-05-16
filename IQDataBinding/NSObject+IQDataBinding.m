@@ -28,6 +28,7 @@ static NSMutableDictionary *stashedObserver = nil;
 }
 
 - (void)observeKeyPath:(NSString *)keyPath callBack:(observerCallBack)callBack {
+    NSAssert(keyPath.length, @"keyPath不合法");
     /*加载默认值*/
     id value = [self.target valueForKeyPath:keyPath];
     if (value) {

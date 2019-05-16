@@ -44,6 +44,8 @@
         weakSelf.contentLabel.text = value;
     }).bind(@"age",^(id value){
         
+    }).bind(@"",^(id value) {
+        
     });
     
 }
