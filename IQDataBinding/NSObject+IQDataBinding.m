@@ -142,10 +142,11 @@ static NSMutableDictionary *stashedObserver = nil;
     
 }
 
-- (NSObject *(^)(NSString *keyPath,...))update {
-    return ^(NSString *keyPath,...) {
+- (NSObject * (^)(id,...))update {
+    return ^id(id attribute,...) {
         return self;
     };
 }
+
 
 @end

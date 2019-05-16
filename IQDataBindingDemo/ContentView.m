@@ -48,8 +48,7 @@
     
 //    const char*type = __typeof__((20));
 //
-//    self.update(@"key",20);
-    self.update(@"key",20);
+    self.update(@"content",@"你妹啊");
     
 }
 
