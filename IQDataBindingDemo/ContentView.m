@@ -9,10 +9,10 @@
 #import "ContentView.h"
 #import <IQDataBinding/IQDataBinding.h>
 
-@interface ContentView ()
+@interface ContentView ()<UITextFieldDelegate>
 
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UITextField *loginTextField;
+@property (nonatomic, strong) UITextField *pwdTextField;
 
 @end
 
@@ -31,43 +31,52 @@
 
 - (void)setUpSubviews {
     
-    [self addSubview:self.titleLabel];
-    [self addSubview:self.contentLabel];
+
+    [self addSubview:self.loginTextField];
+    [self addSubview:self.pwdTextField];
     
-    self.titleLabel.frame = CGRectMake(0, 0, self.bounds.size.width, 20);
-    self.contentLabel.frame = CGRectMake(0, 40, self.bounds.size.width, 20);
+    self.loginTextField.frame = CGRectMake(0, 0, self.bounds.size.width, 30);
+    self.pwdTextField.frame = CGRectMake(0, 40, self.bounds.size.width, 30);
     
     __weak typeof(self)weakSelf = self;
     self.bind(@"title",^(id value){
-        weakSelf.titleLabel.text = value;
+        weakSelf.loginTextField.text = value;
     }).bind(@"content",^(id value){
-        weakSelf.contentLabel.text = value;
+        weakSelf.pwdTextField.text = value;
     }).bind(@"age",^(id value){
         
     });
     
-//    const char*type = __typeof__((20));
-//
-    self.update(@"content",@"你妹啊");
-    
 }
 
-- (UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc]init];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
-        _titleLabel.backgroundColor = [UIColor greenColor];
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    if (textField.text) {
+        self.update(@"content",textField.text);
     }
-    return _titleLabel;
+    return YES;
 }
 
-- (UILabel *)contentLabel {
-    if (!_contentLabel) {
-        _contentLabel = [[UILabel alloc]init];
-        _contentLabel.textAlignment = NSTextAlignmentCenter;
-        _contentLabel.backgroundColor = [UIColor redColor];
+- (UITextField *)loginTextField {
+    if (!_loginTextField) {
+        _loginTextField = [[UITextField alloc]init];
+        _loginTextField.borderStyle = UITextBorderStyleRoundedRect;
+        _loginTextField.backgroundColor = [UIColor greenColor];
+        _loginTextField.placeholder = @"请输入用户名";
+        _loginTextField.delegate = self;
     }
-    return _contentLabel;
+    return _loginTextField;
+}
+
+- (UITextField *)pwdTextField {
+    if (!_pwdTextField) {
+        _pwdTextField = [[UITextField alloc]init];
+        _pwdTextField.borderStyle = UITextBorderStyleRoundedRect;
+        _pwdTextField.backgroundColor = [UIColor redColor];
+        _pwdTextField.placeholder = @"请输入密码";
+        _pwdTextField.delegate = self;
+    }
+    return _pwdTextField;
 }
 /*
 // Only override drawRect: if you perform custom drawing.

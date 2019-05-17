@@ -11,6 +11,7 @@
 
 static NSString *kViewAssociatedModelKey = @"kViewAssociatedModelKey";
 static NSMutableDictionary *stashedObserver = nil;
+static id objectSelf = nil;
 
 @interface IQWatchDog : NSObject
 
@@ -64,6 +65,7 @@ static NSMutableDictionary *stashedObserver = nil;
 @implementation NSObject (IQDataBinding)
 
 - (void)bindModel:(id)model {
+    objectSelf = self;
     /*给view添加一个关联对象IQWatchDog，IQWatchDog职责如下
      1.存储@{绑定的Key，回调Block}对应关系。
      2.根据@{绑定的Key，回调Block}中的Key，进行KVO监听。
@@ -101,12 +103,13 @@ static NSMutableDictionary *stashedObserver = nil;
 }
 
 - (NSObject *(^)(NSString *keyPath,observerCallBack observer))bind {
-    
+    objectSelf = self;
     if (!stashedObserver) {
         stashedObserver = [NSMutableDictionary dictionary];
     }
     
     IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
+    
     return ^(NSString *keyPath,observerCallBack observer){
         /*viewAssociatedModel为空，说明在绑定属性前没有绑定model，此处进行stash暂存*/
         if (!viewAssociatedModel) {
@@ -128,25 +131,88 @@ static NSMutableDictionary *stashedObserver = nil;
     };
 }
 
-- (void)updateValue:(id)value forKeyPath:(NSString *)keyPath {
-#warning fix me！！直接setvalue会触发KVO，导致死循环
-    IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
-    [viewAssociatedModel.target setValue:value forKey:keyPath];
-#warning TODO 可以用不定参数来解决传输不同类型数据问题。
-#warning TODO object_setIvar函数只支持设置id类型，需要根据不定参数进行函数强转。
-#warning 采用函数式编程思路进行设置
-//    Ivar ivar = class_getInstanceVariable([viewAssociatedModel.target class], [keyPath UTF8String]);
-//    void (*f)(id, Ivar, float) = (void (*)(id, Ivar, float))object_setIvar;
-//    object_setIvar(viewAssociatedModel.target, ivar, value);
-//    f(viewAssociatedModel.target, ivar, value);
-    
-}
-
 - (NSObject * (^)(id,...))update {
     return ^id(id attribute,...) {
         return self;
     };
 }
 
+id autoboxing(const char *type, ...) {
+    
+    va_list v;
+    va_start(v, type);
+    
+    NSString *key = va_arg(v, NSString *);
+    IQWatchDog *watchDog = objc_getAssociatedObject(objectSelf, &kViewAssociatedModelKey);
+    Ivar ivar = class_getInstanceVariable([watchDog.target class], [[NSString stringWithFormat:@"_%@",key] UTF8String]);
+    
+    id obj = nil;
+    if (strcmp(type, @encode(id)) == 0) {
+        id actual = va_arg(v, id);
+        object_setIvar(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(CGPoint)) == 0) {
+        CGPoint actual = (CGPoint)va_arg(v, CGPoint);
+        void (*fcgpoint)(id, Ivar, CGPoint) = (void (*)(id, Ivar, CGPoint))object_setIvar;
+        fcgpoint(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(CGSize)) == 0) {
+        CGSize actual = (CGSize)va_arg(v, CGSize);
+        void (*fcgsize)(id, Ivar, CGSize) = (void (*)(id, Ivar, CGSize))object_setIvar;
+        fcgsize(watchDog.target,ivar,actual);
+    }  else if (strcmp(type, @encode(double)) == 0) {
+        double actual = (double)va_arg(v, double);
+        void (*fdouble)(id, Ivar, double) = (void (*)(id, Ivar, double))object_setIvar;
+        fdouble(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(float)) == 0) {
+        float actual = (float)va_arg(v, double);
+        void (*ffloat)(id, Ivar, float) = (void (*)(id, Ivar, float))object_setIvar;
+        ffloat(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(int)) == 0) {
+        int actual = (int)va_arg(v, int);
+        void (*fint)(id, Ivar, int) = (void (*)(id, Ivar, int))object_setIvar;
+        fint(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(long)) == 0) {
+        long actual = (long)va_arg(v, long);
+        void (*flong)(id, Ivar, long) = (void (*)(id, Ivar, long))object_setIvar;
+        flong(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(long long)) == 0) {
+        long long actual = (long long)va_arg(v, long long);
+        void (*flonglong)(id, Ivar, long long) = (void (*)(id, Ivar, long long))object_setIvar;
+        flonglong(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(short)) == 0) {
+        short actual = (short)va_arg(v, int);
+        void (*fshort)(id, Ivar, short) = (void (*)(id, Ivar, short))object_setIvar;
+        fshort(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(char)) == 0) {
+        char actual = (char)va_arg(v, int);
+        void (*fchar)(id, Ivar, char) = (void (*)(id, Ivar, char))object_setIvar;
+        fchar(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(bool)) == 0) {
+        bool actual = (bool)va_arg(v, int);
+        void (*fbool)(id, Ivar, bool) = (void (*)(id, Ivar, bool))object_setIvar;
+        fbool(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(unsigned char)) == 0) {
+        unsigned char actual = (unsigned char)va_arg(v, unsigned int);
+        void (*funsignedchar)(id, Ivar, unsigned char) = (void (*)(id, Ivar, unsigned char))object_setIvar;
+        funsignedchar(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(unsigned int)) == 0) {
+        unsigned int actual = (unsigned int)va_arg(v, unsigned int);
+        void (*funsignedint)(id, Ivar, unsigned int) = (void (*)(id, Ivar, unsigned int))object_setIvar;
+        funsignedint(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(unsigned long)) == 0) {
+        unsigned long actual = (unsigned long)va_arg(v, unsigned long);
+        void (*funsignedlong)(id, Ivar, unsigned long) = (void (*)(id, Ivar, unsigned long))object_setIvar;
+        funsignedlong(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(unsigned long long)) == 0) {
+        unsigned long long actual = (unsigned long long)va_arg(v, unsigned long long);
+        void (*funsignedlonglong)(id, Ivar, unsigned long long) = (void (*)(id, Ivar, unsigned long long))object_setIvar;
+        funsignedlonglong(watchDog.target,ivar,actual);
+    } else if (strcmp(type, @encode(unsigned short)) == 0) {
+        unsigned short actual = (unsigned short)va_arg(v, unsigned int);
+        void (*funsignedshort)(id, Ivar, unsigned short) = (void (*)(id, Ivar, unsigned short))object_setIvar;
+        funsignedshort(watchDog.target,ivar,actual);
+    }
+    va_end(v);
+    return obj;
+}
 
 @end

@@ -31,24 +31,20 @@
 }
 
 - (void)changeButtonClicked {
-    self.contentModel.title = @"title changed";
-    self.contentModel.content = @"content changed";
+    self.contentModel.title = @"lobster";
+    self.contentModel.content = @"654321";
     self.contentModel.age = 28;
-    [self.contentView updateValue:@(30) forKeyPath:@"age"];
-    [self.contentView updateValue:@(30.0) forKeyPath:@"cgfl"];
-    [self.contentView updateValue:[NSNumber numberWithFloat:50.0] forKeyPath:@"fl"];
-    
 }
 
 - (void)setUpSubviews {
-    self.contentView = [[ContentView alloc]initWithFrame:CGRectMake(100, 100, 200, 60)];
+    self.contentView = [[ContentView alloc]initWithFrame:CGRectMake(100, 80, 200, 100)];
     [self.view addSubview:self.contentView];
     self.contentView.center = self.view.center;
     
     self.changeButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.changeButton.frame = CGRectMake(self.contentView.frame.origin.x, self.contentView.frame.origin.y + 100, 200, 40);
     
-    [self.changeButton setTitle:@"更改标题和内容" forState:UIControlStateNormal];
+    [self.changeButton setTitle:@"加载默认用户名和密码" forState:UIControlStateNormal];
     [self.changeButton addTarget:self action:@selector(changeButtonClicked) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.changeButton];
     
@@ -56,8 +52,8 @@
 
 - (void)configData {
     self.contentModel = [[ContentModel alloc]init];
-    self.contentModel.title = @"title";
-    self.contentModel.content = @"content";
+    self.contentModel.title = @"lobster";
+    self.contentModel.content = @"123456";
     
     /*view和viewModel之间绑定*/
     [self.contentView bindModel:self.contentModel];
