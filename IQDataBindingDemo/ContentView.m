@@ -43,16 +43,30 @@
         weakSelf.loginTextField.text = value;
     }).bind(@"content",^(id value){
         weakSelf.pwdTextField.text = value;
-    }).bind(@"age",^(id value){
-        
     });
     
 }
+/*
+ @property (nonatomic, assign) CGPoint point;
+ @property (nonatomic, assign) CGSize size;
+ @property (nonatomic, assign) double db;
+ @property (nonatomic, assign) float fl;
+ @property (nonatomic, assign) long lg;
+ @property (nonatomic, assign) long long llg;
+ @property (nonatomic, assign) short st;
+ @property (nonatomic, assign) char ch;
+ @property (nonatomic, assign) bool bl;
+ @property (nonatomic, assign) unsigned char ucha;
+ @property (nonatomic, assign) unsigned long ulg;
+ @property (nonatomic, assign) unsigned int uit;
+ @property (nonatomic, assign) unsigned long long ullg;
+ @property (nonatomic, assign) unsigned short ust;
+ */
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [textField resignFirstResponder];
     if (textField.text) {
-        self.update(@"content",textField.text);
+        self.update(@"content",textField.text).update(@"point",CGPointMake(10, 20)).update(@"size",CGSizeMake(100, 200)).update(@"db",300).update(@"fl",400.0).update(@"lg",500.0).update(@"llg",70000000).update(@"st",700).update(@"ch","char").update(@"bl",true).update(@"ucha","lobster");
     }
     return YES;
 }

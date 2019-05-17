@@ -33,7 +33,6 @@
 - (void)changeButtonClicked {
     self.contentModel.title = @"lobster";
     self.contentModel.content = @"654321";
-    self.contentModel.age = 28;
 }
 
 - (void)setUpSubviews {
