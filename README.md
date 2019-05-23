@@ -62,13 +62,13 @@ pod 'IQDataBinding'
 
 ## IQDataBinding踩坑记
 
-* View更新ViewModel属性时，如何让一个函数支持传输不同的数据类型？
+* View更新ViewModel属性时，如何让一个函数支持传输不同的参数类型？
 * View更新ViewModel时，如何避免触发KVO而导致死循环？
 * 如何自动移除KVO？
 
-**View更新ViewModel属性时，如何让一个函数支持传输不通的数据类型？**  
+**View更新ViewModel属性时，如何让一个函数支持传输不同的参数类型？**  
 
-笔者借鉴了Masonry框架的解决方案，通过宏定义+不定参数解决了传输不通数据类型的问题。感兴趣的可以了解下Masonry中_MASBoxValue这个函数。  
+笔者借鉴了Masonry框架的解决方案，通过宏定义+不定参数解决了传输不同的参数类型的问题。感兴趣的可以了解下Masonry中_MASBoxValue这个函数。  
 
 **View更新ViewModel时，如何避免触发KVO而导致死循环？**  
 
