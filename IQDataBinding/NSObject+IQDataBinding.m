@@ -151,10 +151,12 @@ id autoboxing(const char *type, ...) {
         id actual = va_arg(v, id);
         object_setIvar(watchDog.target,ivar,actual);
     } else if (strcmp(type, @encode(CGPoint)) == 0) {
+#warning fix me!!!
         CGPoint actual = (CGPoint)va_arg(v, CGPoint);
         void (*fcgpoint)(id, Ivar, CGPoint) = (void (*)(id, Ivar, CGPoint))object_setIvar;
         fcgpoint(watchDog.target,ivar,actual);
     } else if (strcmp(type, @encode(CGSize)) == 0) {
+#warning fix me!!!
         CGSize actual = (CGSize)va_arg(v, CGSize);
         void (*fcgsize)(id, Ivar, CGSize) = (void (*)(id, Ivar, CGSize))object_setIvar;
         fcgsize(watchDog.target,ivar,actual);
