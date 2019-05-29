@@ -70,16 +70,13 @@ static NSMutableDictionary *stashedObserver = nil;
      3.监听view Dealloc事件，自动移除KVO监听。
      */
     IQWatchDog *viewAssociatedModel = objc_getAssociatedObject(self, &kViewAssociatedModelKey);
-    if (!viewAssociatedModel) {
-        viewAssociatedModel = [[IQWatchDog alloc]init];
-        viewAssociatedModel.target = model;
-        objc_setAssociatedObject(self, &kViewAssociatedModelKey, viewAssociatedModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (viewAssociatedModel) {
+        objc_setAssociatedObject(self, &kViewAssociatedModelKey, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     }
     
-    if (viewAssociatedModel.target) {
-        //如果有view的关联model，则先把观察model的操作移除掉
-        [viewAssociatedModel removeAllObservers];
-    }
+    viewAssociatedModel = [[IQWatchDog alloc]init];
+    viewAssociatedModel.target = model;
+    objc_setAssociatedObject(self, &kViewAssociatedModelKey, viewAssociatedModel, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     
     /*借鉴Git stash暂存命令理念，stashedObserver职责如下
      1.如果bindModel调用在绑定keyPath之后调用，会自动把当前@{绑定的Key，回调Block}结构保存到暂存区。

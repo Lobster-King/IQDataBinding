@@ -66,7 +66,6 @@
     [textField resignFirstResponder];
     if (textField.text) {
         self.update(@"content",textField.text).update(@"point",CGPointMake(10, 20)).update(@"size",CGSizeMake(100, 200)).update(@"db",300).update(@"fl",400.0).update(@"lg",500.0).update(@"llg",70000000).update(@"st",700).update(@"ch","char").update(@"bl",true).update(@"ucha","lobster");
-        [self performSelector:@selector(removeFromSuperview) withObject:nil afterDelay:0.1];
     }
     return YES;
 }
