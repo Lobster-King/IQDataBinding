@@ -11,8 +11,6 @@
 
 static NSString *kViewAssociatedModelKey = @"kViewAssociatedModelKey";
 static NSMutableDictionary *stashedObserver = nil;
-#warning 全局静态变量引用self，会导致self不能释放！！！
-static id objectSelf = nil;
 
 @interface IQWatchDog : NSObject
 
@@ -66,7 +64,6 @@ static id objectSelf = nil;
 @implementation NSObject (IQDataBinding)
 
 - (void)bindModel:(id)model {
-    objectSelf = self;
     /*给view添加一个关联对象IQWatchDog，IQWatchDog职责如下
      1.存储@{绑定的Key，回调Block}对应关系。
      2.根据@{绑定的Key，回调Block}中的Key，进行KVO监听。
@@ -104,7 +101,6 @@ static id objectSelf = nil;
 }
 
 - (NSObject *(^)(NSString *keyPath,observerCallBack observer))bind {
-    objectSelf = self;
     if (!stashedObserver) {
         stashedObserver = [NSMutableDictionary dictionary];
     }
@@ -143,8 +139,10 @@ id autoboxing(const char *type, ...) {
     va_list v;
     va_start(v, type);
     
+    NSObject *pointer = va_arg(v, id);
     NSString *key = va_arg(v, NSString *);
-    IQWatchDog *watchDog = objc_getAssociatedObject(objectSelf, &kViewAssociatedModelKey);
+   
+    IQWatchDog *watchDog = objc_getAssociatedObject(pointer, &kViewAssociatedModelKey);
     Ivar ivar = class_getInstanceVariable([watchDog.target class], [[NSString stringWithFormat:@"_%@",key] UTF8String]);
     
     id obj = nil;

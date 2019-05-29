@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 #define update(key,...)                 update(IQBoxValue(key,(__VA_ARGS__)))
-#define IQBoxValue(key,value) autoboxing(@encode(__typeof__((value))),key,(value))
+#define IQBoxValue(key,value) autoboxing(@encode(__typeof__((value))),self,key,(value))
 
 id autoboxing(const char *type, ...);
 
