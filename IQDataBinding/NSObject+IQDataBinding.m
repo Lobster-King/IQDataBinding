@@ -11,6 +11,7 @@
 
 static NSString *kViewAssociatedModelKey = @"kViewAssociatedModelKey";
 static NSMutableDictionary *stashedObserver = nil;
+#warning 全局静态变量引用self，会导致self不能释放！！！
 static id objectSelf = nil;
 
 @interface IQWatchDog : NSObject
