@@ -9,7 +9,7 @@
 Pod::Spec.new do |spec|
 
   spec.name         = "IQDataBinding"
-  spec.version      = "0.0.1"
+  spec.version      = "0.0.2"
   spec.summary      = "iOS端View和ViewModel数据绑定框架。基于KVO监听所绑定ViewModel的属性，支持链式调用。"
   spec.description  = <<-DESC
 A solution for decoupling modules in iOS platform.
