@@ -22,7 +22,7 @@ typedef void(^observerCallBack)(id changedValue);
 
 - (void)bindModel:(id)model;
 
-- (NSObject *(^)(NSString *keyPath,observerCallBack observer))bind;
+- (NSObject *(^)(NSString *keyPath,observerCallBack observer))observe;
 - (NSObject * (^)(id,...))update;
 
 @end

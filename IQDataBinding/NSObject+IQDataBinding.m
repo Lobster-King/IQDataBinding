@@ -97,7 +97,7 @@ static NSMutableDictionary *stashedObserver = nil;
     }
 }
 
-- (NSObject *(^)(NSString *keyPath,observerCallBack observer))bind {
+- (NSObject *(^)(NSString *keyPath,observerCallBack observer))observe {
     if (!stashedObserver) {
         stashedObserver = [NSMutableDictionary dictionary];
     }

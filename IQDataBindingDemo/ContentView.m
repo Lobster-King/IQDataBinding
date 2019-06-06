@@ -38,9 +38,9 @@
     self.pwdTextField.frame = CGRectMake(0, 40, self.bounds.size.width, 30);
     
     __weak typeof(self)weakSelf = self;
-    self.bind(@"title",^(id value){
+    self.observe(@"title",^(id value){
         weakSelf.loginTextField.text = value;
-    }).bind(@"content",^(id value){
+    }).observe(@"content",^(id value){
         weakSelf.pwdTextField.text = value;
     });
     
