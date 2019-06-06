@@ -56,8 +56,6 @@
     
     /*view和viewModel之间绑定*/
     [self.contentView bindModel:self.contentModel];
-    [self.contentView bindModel:self.contentModel];
-    [self.contentView bindModel:self.contentModel];
     
 }
 
